@@ -1,0 +1,91 @@
+import pandas as pd
+import numpy as np
+df=pd.read_csv("TrainsetHardV7.csv",low_memory=False)
+pd.options.mode.chained_assignment = None
+win=[]
+for i in range(len(df['FS_2'])):
+    print(str(i)+"/15000")
+    if i>7600:
+        win.append(0)
+        auxFS=df['FS_1'][i]
+        df['FS_1'][i]=df['FS_2'][i]
+        df['FS_2'][i]=auxFS
+        auxFSOF=df['FSOF_1'][i]
+        df['FSOF_1'][i]=df['FSOF_2'][i]
+        df['FSOF_2'][i]=auxFSOF
+        auxAC=df['ACES_1'][i]
+        df['ACES_1'][i]=df['ACES_2'][i]
+        df['ACES_2'][i]=auxAC
+        auxdf=df['DF_1'][i]
+        df['DF_1'][i]=df['DF_2'][i]
+        df['DF_2'][i]=auxdf
+        auxW1S=df['W1S_1'][i]
+        df['W1S_1'][i]=df['W1S_2'][i]
+        df['W1S_2'][i]=auxW1S
+        auxW1SOF=df['W1SOF_1'][i]
+        df['W1SOF_1'][i]=df['W1SOF_2'][i]
+        df['W1SOF_2'][i]=auxW1SOF
+        auxWIS=df['WIS_1'][i]
+        df['WIS_1'][i]=df['WIS_2'][i]
+        df['WIS_2'][i]=auxWIS
+        auxBP=df['BP_1'][i]
+        df['BP_1'][i]=df['BP_2'][i]
+        df['BP_2'][i]=auxBP
+        auxBPOF=df['BPOF_1'][i]
+        df['BPOF_1'][i]=df['BPOF_2'][i]
+        df['BPOF_2'][i]=auxBPOF
+        auxTPW=df['TPW_1'][i]
+        df['TPW_1'][i]=df['TPW_2'][i]
+        df['TPW_2'][i]=auxTPW
+        auxRPW=df['RPW_1'][i]
+        df['RPW_1'][i]=df['RPW_2'][i]
+        df['RPW_2'][i]=auxRPW
+        auxRPWOF=df['RPWOF_1'][i]
+        df['RPWOF_1'][i]=df['RPWOF_2'][i]
+        df['RPWOF_2'][i]=auxRPWOF
+        auxFSrival=df['FSRival_1'][i]
+        df['FSRival_1'][i]=df['FSRival_2'][i]
+        df['FSRival_2'][i]=auxFSrival
+        auxFSOFrival=df['FSOFRival_1'][i]
+        df['FSOFRival_1'][i]=df['FSOFRival_2'][i]
+        df['FSOFRival_2'][i]=auxFSOFrival
+        auxACrival=df['ACESRival_1'][i]
+        df['ACESRival_1'][i]=df['ACESRival_2'][i]
+        df['ACESRival_2'][i]=auxACrival
+        auxdfrival=df['DFRival_1'][i]
+        df['DFRival_1'][i]=df['DFRival_2'][i]
+        df['DFRival_2'][i]=auxdfrival
+        auxW1Srival=df['W1SRival_1'][i]
+        df['W1SRival_1'][i]=df['W1SRival_2'][i]
+        df['W1SRival_2'][i]=auxW1Srival
+        auxW1SOFrival=df['W1SOFRival_1'][i]
+        df['W1SOFRival_1'][i]=df['W1SOFRival_2'][i]
+        df['W1SOFRival_2'][i]=auxW1SOFrival
+        auxWISrival=df['WISRival_1'][i]
+        df['WISRival_1'][i]=df['WISRival_2'][i]
+        df['WISRival_2'][i]=auxWISrival
+        auxBPrival=df['BPRival_1'][i]
+        df['BPRival_1'][i]=df['BPRival_2'][i]
+        df['BPRival_2'][i]=auxBPrival
+        auxBPOFrival=df['BPOFRival_1'][i]
+        df['BPOFRival_1'][i]=df['BPOFRival_2'][i]
+        df['BPOFRival_2'][i]=auxBPOFrival
+        auxTPWrival=df['TPWRival_1'][i]
+        df['TPWRival_1'][i]=df['TPWRival_2'][i]
+        df['TPWRival_2'][i]=auxTPWrival
+        auxRPWrival=df['RPWRival_1'][i]
+        df['RPWRival_1'][i]=df['RPWRival_2'][i]
+        df['RPWRival_2'][i]=auxRPWrival
+        auxRPWOFrival=df['RPWOFRival_1'][i]
+        df['RPWOFRival_1'][i]=df['RPWOFRival_2'][i]
+        df['RPWOFRival_2'][i]=auxRPWOFrival
+        auxEloWinner=df['eloWinner'][i]
+        df['eloWinner'][i]=df['eloLoser'][i]
+        df['eloLoser'][i]=auxEloWinner
+        auxRivalIWA=df['eloIWARival'][i]
+        df['eloIWARival'][i]=df['eloIWARival_2'][i]
+        df['eloIWARival_2'][i]=auxRivalIWA
+    else:
+        win.append(1)
+df['win']=win
+df.to_csv('trainsetHardV8.csv',index=False)
